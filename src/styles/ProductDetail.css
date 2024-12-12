@@ -1,0 +1,131 @@
+:root {
+    /* Warna Utama */
+    --primary: #c3eb6d;
+    --primary-hover: #b2e543;
+  
+    /* Warna Font */
+    --font-primary: #2f2f2f;
+    --font-secondary: #797e82;
+    --font-primary-hover: #474747;
+  
+    /* Warna Background */
+    --background: #f6f6f6;
+    --background-menu: #ffffff;
+  
+    /* Ukuran Font Mobile */
+    --font-very-small: 10px;
+    --font-small: 12px;
+    --font-small-medium: 14px;
+    --font-medium: 16px;
+    --font-head: 18px;
+  }
+  
+  .product-detail {
+    height: calc(100vh - 50px);
+    margin-top: 50px;
+    width: 100%;
+    background-color: var(--background);
+    overflow: hidden;
+  }
+  
+  .photo-product {
+    height: 40%;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+  }
+  
+  .photo-product img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    padding: 40px;
+  }
+  
+  .bag-bawah {
+    height: 60%;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+   
+  }
+  
+  .bag-bawah h1 {
+    font-size: var(--font-head);
+    margin-top: 30px;
+  }
+  
+  .bag-bawah p {
+    font-size: var(--font-small-medium);
+    text-align: justify;
+  }
+  
+  .star-rating {
+    color: #ffcc00;
+  }
+  
+  .deskripsi {
+    color: var(--font-secondary);
+    font-size: var(--font-very-small);
+    margin-top: 8%;
+  }
+  
+  .priceBtn {
+    position: absolute;
+    width: 90%;
+    bottom: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .custom-button {
+    border: none;
+    background-color: #d7d7d7;
+    border-radius: 100px;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .btn-modal {
+    background-color: var(--primary);
+    color: var(--font-primary);
+    width: 100%;
+    border: none;
+    padding: 8px;
+    border-radius: 100px;
+    margin-top: 24px;
+    font-size: var(--font-small-medium);
+  }
+  
+  .btn-addtocart {
+    background-color: var(--primary);
+    font-size: var(--font-small);
+    color: var(--font-primary);
+    border: none;
+    border-radius: 100px;
+    padding: 10px 40px;
+    cursor: pointer;
+  }
+  
+  .btn-addtocart:hover,
+  .btn-modal:hover {
+    background-color: var(--primary-hover);
+  }
+  
+  .quantity-control-contain {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .quantity-control-contain p {
+    font-size: var(--font-small-medium);
+    font-weight: 500;
+  }
+  

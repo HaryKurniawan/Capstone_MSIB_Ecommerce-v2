@@ -1,0 +1,100 @@
+.home {
+  background-color: #F6F6F6;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.home h5 {
+  padding: 0rem 20px;
+  padding-bottom: 30px;
+  font-size: 22px;
+  color: #565656;
+}
+
+.search-container {
+  margin-bottom: 10px;
+  padding: 0rem 15px;
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  margin-top: 80px;
+}
+
+.search-container input {
+  width: 85%;
+  padding: 10px;
+  padding-left: 20px;
+  font-size: 12px;
+  border-radius: 9999px;
+  border: none;
+  outline: none;
+  margin-right: 10px;
+}
+
+.search-container button {
+  width: 40px;
+  height: 40px;
+  background-color: #C3EB6D;
+  color: #292929;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filter-buttons {
+  display: flex;
+  margin-bottom: 0;
+  padding: 0 15px;
+  margin-bottom: 5px;
+  background-color: #F6F6F6; 
+  padding-top: 5px;
+  padding-bottom: 8px;
+}
+
+.bag-atas-home{
+  width: 100%;
+  background-color: #F6F6F6; 
+  position: fixed;
+  top: 0px;
+  z-index: 6;
+}
+
+.filter-buttons select,
+.filter-buttons button {
+  padding: 8px 10px;
+  padding-right: 10px;
+  font-size: 10px;
+  background-color: #fff;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  margin-right: 5px;
+  color: #797E82;
+}
+
+.filter-buttons button.active {
+  background-color: #C3EB6D;
+  color: #797E82;
+}
+
+.produk{
+  margin-top: 170px;
+  margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+  .home {
+      margin-left: 0%;
+      margin-right: 0%;
+  }
+  .home h5 {
+      margin-top: 50px;
+      padding: 0rem 20px;
+      padding-top: 25px;
+      padding-bottom: 20px;
+      font-size: 18px;
+      color: #565656;
+  }
+}
