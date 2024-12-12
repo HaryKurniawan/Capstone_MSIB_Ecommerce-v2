@@ -8,14 +8,13 @@
   }
   
   .search-container input {
-    width: 85%;
+    width: calc(100% - 60px);
     padding: 10px;
     padding-left: 20px;
     font-size: 12px;
     border-radius: 9999px;
     border: none;
     outline: none;
-    margin-right: 10px;
   }
   
   .search-container button {

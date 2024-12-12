@@ -1,15 +1,22 @@
+.home-contain{
+    font-family: 'Poppins', sans-serif;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 0px;
+}
+
+
+
 .poster-1{
-    width: 90%;
+    width: 100%;
     height: 120px;
     margin-top: 20px;
-    margin-left: 5%;
     background-color: #CBEA7E;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     overflow: hidden;
-
 }
 .bag-kanan{
     margin-left: 20px;
@@ -20,10 +27,10 @@
 }
 
 .bag-kanan p{
- margin-bottom: -0px;
- font-weight: 500;
- color: #3A3A3A;
- font-size: 14px;
+    margin-bottom: -0px;
+    font-weight: 500;
+    color: #3A3A3A;
+    font-size: 14px;
 }
 
 .teks-mid{
@@ -35,8 +42,6 @@
 }
 
 .poster-2{
-    width: 90%;
-    margin-left: 5%;
     background: #CBEA7E;
     height: 80px;
     border-radius: 10px;
@@ -47,6 +52,10 @@
     margin-top: 10px;
 }
 
+.poster2-contain{
+    width: 100%;
+}
+
 .bag-kanan2 p{
     margin-bottom: -1px;
     font-weight: 500;
@@ -55,7 +64,7 @@
 .teks-mid2{
     background-color: #fff;
     border-radius: 5px;
-padding: 0px 4px;
+    padding: 0px 4px;
     margin-left: -2px;
     font-weight: 500;
 }
@@ -77,8 +86,7 @@ padding: 0px 4px;
 }
 
 .our-products {
-    padding: 20px;
-    font-family: 'Poppins', sans-serif;
+    padding: 20px 0px;
   }
   
   .our-products p {
@@ -95,17 +103,31 @@ padding: 0px 4px;
   }
   
   .product-box {
-    min-width: 140px; /* Ukuran minimum setiap kotak */
+    min-width: 140px;
     height: 160px;
-    flex-shrink: 0; /* Pastikan kotak tidak mengecil */
-    background-color: #d5d5d5;
+    flex-shrink: 0; 
+    background-color: #A5A5A5;
     border-radius: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     font-size: 14px;
-    color: #4f4f4f;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
   }
+
+
   
-  
+@media (max-width: 768px) {
+    .poster-1{
+        width: 100%;
+        height: 120px;
+        margin-top: 20px;
+        background-color: #CBEA7E;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+    }
+
+}

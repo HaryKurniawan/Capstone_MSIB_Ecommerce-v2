@@ -57,10 +57,6 @@ const ProductCard = ({ product }) => {
     // Menambahkan item ke keranjang
     dispatch(addToCart({ ...product, quantity }));
 
-    // Mengurangi stok di localStorage
-    const newStock = currentStock - quantity;
-    localStorage.setItem(`product_stock_${product.id}`, newStock);
-
     notification.success({
       message: "Added to Cart",
       description: `${product.title} x${quantity}`,

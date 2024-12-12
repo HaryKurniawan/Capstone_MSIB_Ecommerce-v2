@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import ProductList from '../components/ProductList';
 import SearchBar from '../components/SearchBar'; 
 import poster1 from '../images/poster-i1.svg';
+import jewelrySvg from '../images/jewelry.svg';
+import menClothes from '../images/menClothes.svg';
 import CopyButton from "../components/CopyButton";
 import "../styles/Home.css";
-
 
 function Home() {
   const [category, setCategory] = useState('');
@@ -30,26 +31,21 @@ function Home() {
       .catch((error) => console.error("Error fetching products: ", error));
   }, []);
 
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
-
-  const toggleFilter = (filterType) => {
-    setActiveFilter(activeFilter === filterType ? '' : filterType);
-  };
 
   const handleSearch = () => {
     console.log(`Searching for: ${searchQuery}`);
   };
 
   return (
-    <div className="home">
-    
-    <SearchBar 
+    <div className="home-contain">
+
+      <SearchBar 
       searchQuery={searchQuery} 
       setSearchQuery={setSearchQuery} 
       handleSearch={handleSearch} 
     />
+    
+ 
 
     <div className="poster-1">
       <div className="bag-kanan">
@@ -66,14 +62,14 @@ function Home() {
     <div className="our-products">
       <p>Our Products</p>
       <div className="products-container">
-        <div className="product-box">Ketegori 1</div>
-        <div className="product-box">Ketegori 2</div>
-        <div className="product-box">Ketegori 4</div>
-        <div className="product-box">Ketegori 5</div>
-        <div className="product-box">Ketegori 3</div>
+        <div className="product-box"><img src={jewelrySvg} /></div>
+        <div className="product-box"><img src={menClothes} /></div>
+        <div className="product-box">Jewelry</div>
+        <div className="product-box">Electronics</div>
       </div>
     </div>
 
+<div className="poster2-contain">
     <div className="poster-2">
       <div className="circle"></div>
       <div className="bag-kanan2">
@@ -86,15 +82,16 @@ function Home() {
       <div className="circle2"></div>
 
     </div>
+    </div>
 
-    <div className="category-products">
+    {/* <div className="category-products">
       <ProductList
         category={category}
         ratingFilter={activeFilter === 'rating'}
         priceFilter={activeFilter === 'price'}
         searchQuery={searchQuery}
       />
-    </div>
+    </div> */}
     </div>
   );
 }

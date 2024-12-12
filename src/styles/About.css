@@ -13,6 +13,7 @@
 }
 
 .search-container {
+  width: 100%;
   margin-bottom: 10px;
   padding: 0rem 15px;
   display: flex;
@@ -22,14 +23,13 @@
 }
 
 .search-container input {
-  width: 85%;
+  width: calc(100% - 50px);
   padding: 10px;
   padding-left: 20px;
   font-size: 12px;
   border-radius: 9999px;
   border: none;
   outline: none;
-  margin-right: 10px;
 }
 
 .search-container button {
@@ -54,7 +54,7 @@
 }
 
 .bag-atas-home{
-  width: 100%;
+  width: 80%;
   background-color: #F6F6F6; 
   position: fixed;
   top: 0px;
@@ -85,6 +85,14 @@
 }
 
 @media (max-width: 768px) {
+  .bag-atas-home{
+    width: 100%;
+    margin-left: 0%;
+    position: fixed;
+    top: 0px;
+    z-index: 6;
+  }
+  
   .home {
       margin-left: 0%;
       margin-right: 0%;

@@ -12,22 +12,36 @@ const ProductDetail = () => {
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [stock, setStock] = useState(0); // State untuk stok produk
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // Fetch data produk
     fetch(`https://fakestoreapi.com/products/${id}`)
       .then((res) => res.json())
-      .then(setProduct)
+      .then((data) => {
+        setProduct(data);
+        // Ambil stok produk dari localStorage
+        const storedStock = parseInt(localStorage.getItem(`product_stock_${id}`)) || 0;
+        setStock(storedStock);
+      })
       .catch((err) => console.error("Error fetching product:", err));
+
+    // Set interval untuk mengecek dan memperbarui stok setiap detik
+    const interval = setInterval(() => {
+      const updatedStock = parseInt(localStorage.getItem(`product_stock_${id}`)) || 0;
+      setStock(updatedStock);
+    }, 1000); // Update stok setiap detik (bisa disesuaikan)
+
+    // Cleanup interval ketika komponen di-unmount
+    return () => clearInterval(interval);
   }, [id]);
 
   const handleAddToCart = () => {
     const isLoggedIn = localStorage.getItem("access_token");
 
     if (isLoggedIn) {
-      dispatch(
-        addToCart({ ...product, quantity })
-      );
+      dispatch(addToCart({ ...product, quantity }));
       notification.success({
         description: "Berhasil menambahkan ke keranjang!",
         placement: "topRight",
@@ -55,12 +69,18 @@ const ProductDetail = () => {
 
       <div className="bag-bawah">
         <h1>{product.title}</h1>
-        {product.rating && (
-          <p>
-            <FontAwesomeIcon icon={faStar} className="star-rating" />{" "}
-            {product.rating.rate} / 5 ({product.rating.count} reviews)
-          </p>
-        )}
+
+        <div className="rating-stock">
+          <p className="stock">Stock: {stock}</p> {/* Menampilkan stok di sini */}
+
+          {product.rating && (
+            <p className="teks-rating">
+              <FontAwesomeIcon icon={faStar} className="star-rating" />{" "}
+              {product.rating.rate} / 5
+            </p>
+          )}
+        </div>
+
         <p className="deskripsi">{product.description}</p>
 
         <div className="priceBtn">
