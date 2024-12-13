@@ -7,26 +7,33 @@ import "../styles/ProductDetail.css";
 import { Modal, notification } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import LoginModal from "../components/LoginModal"; // Import LoginModal
+import LoginModal from "../components/LoginModal"; 
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [isModalVisible, setIsModalVisible] = useState(false); // Modal visibility state
+  const [isModalVisible, setIsModalVisible] = useState(false); 
   const [stock, setStock] = useState(0);
-  const [loginModalVisible, setLoginModalVisible] = useState(false); // Login modal visibility state
+  const [loginModalVisible, setLoginModalVisible] = useState(false); 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios
-      .get(`https://fakestoreapi.com/products/${id}`)
-      .then((response) => {
+    const fetchProduct = async () => {
+      try {
+        const url = `${import.meta.env.VITE_API_BASE_URL}/products/${id}`; 
+        const response = await axios.get(url);
         setProduct(response.data);
+
         const storedStock = parseInt(localStorage.getItem(`product_stock_${id}`)) || 0;
         setStock(storedStock);
-      })
-      .catch((error) => console.error("Error fetching product:", error));
+      } 
+        catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+
+    fetchProduct();
 
     const interval = setInterval(() => {
       const updatedStock = parseInt(localStorage.getItem(`product_stock_${id}`)) || 0;
@@ -47,7 +54,7 @@ const ProductDetail = () => {
       });
       setIsModalVisible(false);
     } else {
-      setLoginModalVisible(true); // Show login modal if user isn't logged in
+      setLoginModalVisible(true);
     }
   };
 
@@ -109,10 +116,9 @@ const ProductDetail = () => {
         </button>
       </Modal>
 
-      {/* LoginModal that is triggered if the user is not logged in */}
       <LoginModal
         visible={loginModalVisible}
-        onClose={() => setLoginModalVisible(false)} // Close the modal when user clicks close
+        onClose={() => setLoginModalVisible(false)} 
       />
     </div>
   );

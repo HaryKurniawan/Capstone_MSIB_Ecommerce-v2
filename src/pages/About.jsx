@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import ProductList from '../components/ProductList';
 import '../styles/About.css';
-import SearchBar from '../components/SearchBar'; // Impor komponen SearchBar
+import SearchBar from '../components/SearchBar';
 
 function About() {
   const [category, setCategory] = useState('');
-  const [categories, setCategories] = useState([]);  
+  const [categories, setCategories] = useState([]);
   const [activeFilter, setActiveFilter] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products/categories')
-      .then((res) => res.json())
-      .then((data) => setCategories(data))
-      .catch((error) => console.error("Error fetching categories: ", error));
+    const fetchCategories = async () => {
+      try {
+        const url = import.meta.env.VITE_URL_PRODUCTS_CATEGORIES; // Mengambil URL dari .env
+        const response = await fetch(url);
+        const data = await response.json();
+        setCategories(data);
+      } catch (error) {
+        console.error("Error fetching categories: ", error);
+      }
+    };
+
+    fetchCategories();
   }, []);
 
   const handleCategoryChange = (event) => {
@@ -81,4 +89,3 @@ function About() {
 }
 
 export default About;
- 

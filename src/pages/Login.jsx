@@ -4,22 +4,23 @@ import "../styles/Login.css";
 import icon1 from "../images/google.png"; 
 import icon2 from "../images/facebook.png";
 import icon3 from "../images/tweet.png";
-import CopyLoginModal from '../components/CopyLoginModal'; // Import modal baru
+import CopyLoginModal from '../components/CopyLoginModal'; 
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isModalVisible, setIsModalVisible] = useState(false); // State untuk mengontrol visibilitas modal
+  const [isModalVisible, setIsModalVisible] = useState(false); 
   const navigate = useNavigate();
 
   useEffect(() => {
-    setIsModalVisible(true); // Menampilkan modal saat komponen pertama kali dimuat
+    setIsModalVisible(true); 
   }, []);
 
   const handleLogin = async () => {
     if (username && password) {
       try {
-        const response = await fetch(`https://fakestoreapi.com/users`);
+        const url = import.meta.env.VITE_URL_USERS; 
+        const response = await fetch(url);
         const users = await response.json();
 
         const user = users.find((user) => user.username === username && user.password === password);
@@ -34,16 +35,17 @@ const Login = () => {
           localStorage.setItem('access_token', 'Token_Berhasil_Login');
           localStorage.setItem('profile', JSON.stringify(userData));
 
-          setIsModalVisible(true); // Menampilkan modal sukses login
+          setIsModalVisible(true); 
           navigate('/');
         } else {
-          setIsModalVisible(true); // Menampilkan modal gagal login
+          setIsModalVisible(true); 
         }
       } catch (error) {
-        setIsModalVisible(true); // Menampilkan modal error
+        console.error("Error fetching users:", error);
+        setIsModalVisible(true); 
       }
     } else {
-      setIsModalVisible(true); // Menampilkan modal input kosong
+      setIsModalVisible(true); 
     }
   };
 

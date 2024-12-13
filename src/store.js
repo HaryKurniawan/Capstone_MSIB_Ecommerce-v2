@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-import { notification } from 'antd';  // Pastikan Anda sudah mengimpor 'notification' dari 'antd'
+import { notification } from 'antd';  
 
 // Ambil data keranjang dari localStorage
 const loadCartFromLocalStorage = () => {
@@ -10,7 +10,7 @@ const loadCartFromLocalStorage = () => {
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    items: loadCartFromLocalStorage(), // Ambil dari localStorage
+    items: loadCartFromLocalStorage(), 
     showCart: false,
   },
   reducers: {
@@ -41,17 +41,15 @@ const cartSlice = createSlice({
     },
     removeFromCart(state, action) {
       state.items = state.items.filter(item => item.id !== action.payload);
-      // Simpan data keranjang ke localStorage
       localStorage.setItem('cart_items', JSON.stringify(state.items));
     },
     incrementQuantity(state, action) {
       const item = state.items.find(item => item.id === action.payload);
       const stock = parseInt(localStorage.getItem(`product_stock_${item.id}`)) || 0;
 
-      // Periksa apakah stok cukup untuk menambah quantity
+      // Periksa apakah stok cukup untuk menambah quantity dan Simpan data keranjang ke localStorage
       if (item.quantity < stock) {
         if (item) item.quantity += 1;
-        // Simpan data keranjang ke localStorage
         localStorage.setItem('cart_items', JSON.stringify(state.items));
       } else {
         notification.error({
@@ -89,10 +87,8 @@ const cartSlice = createSlice({
   },
 });
 
-// Ekspor aksi dari slice
 export const { addToCart, removeFromCart, incrementQuantity, decrementQuantity, toggleCart, checkout } = cartSlice.actions;
 
-// Ekspor store sebagai default export
 const store = configureStore({
   reducer: {
     cart: cartSlice.reducer,

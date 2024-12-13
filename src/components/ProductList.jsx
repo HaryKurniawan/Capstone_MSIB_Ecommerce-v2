@@ -4,25 +4,28 @@ import ProductCard from './ProductCard';
 import "../styles/ProductList.css";
 
 const ProductList = ({ category, ratingFilter, priceFilter, searchQuery }) => {
-const [products, setProducts] = useState([]);
-
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('https://fakestoreapi.com/products')
-      .then((response) => {
+    const fetchProducts = async () => {
+      try {
+        const url = import.meta.env.VITE_URL_PRODUCTS; 
+        const response = await axios.get(url);
         const data = response.data;
-        data.forEach(product => {
+
+        data.forEach((product) => {
           const stock = localStorage.getItem(`product_stock_${product.id}`) || 20;
           localStorage.setItem(`product_stock_${product.id}`, stock);
         });
+
         setProducts(data);
-      })
-      .catch((error) => {
-        console.error("error fetching data", error);
-      });
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchProducts();
   }, []);
-
-
 
   let filteredProducts = products.filter((product) => {
     if (category && product.category !== category) return false;
@@ -35,7 +38,6 @@ const [products, setProducts] = useState([]);
   } else if (priceFilter) {
     filteredProducts.sort((a, b) => a.price - b.price);
   }
-  
 
   return (
     <div className="container">
