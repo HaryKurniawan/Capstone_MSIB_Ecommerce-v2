@@ -35,6 +35,7 @@ const CopyLoginModal = ({ visible, onClose }) => {
         <p className="modal-description">Untuk login, salin username dan password dengan tombol di bawah</p>
         <button className="modal-button" onClick={handleCopyCredentials}>Salin</button>
       </div>
+      
     </Modal>
   );
 };
