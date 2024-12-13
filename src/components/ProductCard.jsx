@@ -27,23 +27,44 @@ const ProductCard = ({ product }) => {
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-  
+    
     const isLoggedIn = localStorage.getItem("access_token");
     if (!isLoggedIn) {
       setIsModalVisible(true); // Show modal if user isn't logged in
       return;
     }
-  
+    
     let currentStock = parseInt(localStorage.getItem(`product_stock_${product.id}`)) || 0;
     if (quantity > currentStock) {
       setIsModalVisible(true); // Show modal if stock is insufficient
       return; 
     }
   
-    dispatch(addToCart({ ...product, quantity }));
-
+    // Create the cart item with the selected product and quantity
+    const cartItem = { ...product, quantity };
+  
+    // Get current cart items from localStorage
+    let cartItems = JSON.parse(localStorage.getItem("cart_items")) || [];
+  
+    // Add the new item to the cart
+    const existingItemIndex = cartItems.findIndex(item => item.id === product.id);
+    if (existingItemIndex >= 0) {
+      // If the item already exists, update its quantity
+      cartItems[existingItemIndex].quantity += quantity;
+    } else {
+      // Otherwise, add the new item to the cart
+      cartItems.push(cartItem);
+    }
+  
+    // Save the updated cart items back to localStorage
+    localStorage.setItem("cart_items", JSON.stringify(cartItems));
+  
+    // Optionally, dispatch to Redux (if needed for state management)
+    dispatch(addToCart(cartItem));
+  
     // Optional: Notify the user that the product was added successfully
   };
+  
 
   const truncateTitle = (title) => (title.length > 15 ? `${title.substring(0, 15)}...` : title);
 
