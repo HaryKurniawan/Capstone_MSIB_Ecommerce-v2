@@ -2,38 +2,37 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store";
+import axios from "axios";  
 import "../styles/ProductDetail.css";
 import { Modal, notification } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
+import LoginModal from "../components/LoginModal"; // Import LoginModal
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [stock, setStock] = useState(0); // State untuk stok produk
+  const [isModalVisible, setIsModalVisible] = useState(false); // Modal visibility state
+  const [stock, setStock] = useState(0);
+  const [loginModalVisible, setLoginModalVisible] = useState(false); // Login modal visibility state
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // Fetch data produk
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProduct(data);
-        // Ambil stok produk dari localStorage
+    axios
+      .get(`https://fakestoreapi.com/products/${id}`)
+      .then((response) => {
+        setProduct(response.data);
         const storedStock = parseInt(localStorage.getItem(`product_stock_${id}`)) || 0;
         setStock(storedStock);
       })
-      .catch((err) => console.error("Error fetching product:", err));
+      .catch((error) => console.error("Error fetching product:", error));
 
-    // Set interval untuk mengecek dan memperbarui stok setiap detik
     const interval = setInterval(() => {
       const updatedStock = parseInt(localStorage.getItem(`product_stock_${id}`)) || 0;
       setStock(updatedStock);
-    }, 1000); // Update stok setiap detik (bisa disesuaikan)
+    }, 1000);
 
-    // Cleanup interval ketika komponen di-unmount
     return () => clearInterval(interval);
   }, [id]);
 
@@ -48,11 +47,7 @@ const ProductDetail = () => {
       });
       setIsModalVisible(false);
     } else {
-      notification.warning({
-        message: "Peringatan",
-        description: "Silakan login terlebih dahulu untuk menambah produk.",
-        placement: "topRight",
-      });
+      setLoginModalVisible(true); // Show login modal if user isn't logged in
     }
   };
 
@@ -71,8 +66,7 @@ const ProductDetail = () => {
         <h1>{product.title}</h1>
 
         <div className="rating-stock">
-          <p className="stock">Stock: {stock}</p> {/* Menampilkan stok di sini */}
-
+          <p className="stock">Stock: {stock}</p>
           {product.rating && (
             <p className="teks-rating">
               <FontAwesomeIcon icon={faStar} className="star-rating" />{" "}
@@ -114,6 +108,12 @@ const ProductDetail = () => {
           Confirm Add to Cart
         </button>
       </Modal>
+
+      {/* LoginModal that is triggered if the user is not logged in */}
+      <LoginModal
+        visible={loginModalVisible}
+        onClose={() => setLoginModalVisible(false)} // Close the modal when user clicks close
+      />
     </div>
   );
 };

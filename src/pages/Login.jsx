@@ -1,38 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { notification } from 'antd';
 import "../styles/Login.css";
 import icon1 from "../images/google.png"; 
 import icon2 from "../images/facebook.png";
 import icon3 from "../images/tweet.png";
+import CopyLoginModal from '../components/CopyLoginModal'; // Import modal baru
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isModalVisible, setIsModalVisible] = useState(false); // State untuk mengontrol visibilitas modal
   const navigate = useNavigate();
 
-  // Menampilkan notifikasi info saat halaman login pertama kali dimuat
   useEffect(() => {
-    notification.info({
-      message: 'Masukkan username dan password',
-      description: 'Masukkan huruf atau kata apapun untuk login.',
-      placement: 'top',
-      duration: 3, 
-    });
+    setIsModalVisible(true); // Menampilkan modal saat komponen pertama kali dimuat
   }, []);
 
-  // Fungsi login untuk memverifikasi username dan password
   const handleLogin = async () => {
     if (username && password) {
       try {
         const response = await fetch(`https://fakestoreapi.com/users`);
         const users = await response.json();
 
-        // Cek apakah ada pengguna dengan username dan password yang sesuai
         const user = users.find((user) => user.username === username && user.password === password);
 
         if (user) {
-          // Simpan data pengguna ke localStorage
           const userData = {
             name: user.name,
             email: user.email,
@@ -42,40 +34,16 @@ const Login = () => {
           localStorage.setItem('access_token', 'Token_Berhasil_Login');
           localStorage.setItem('profile', JSON.stringify(userData));
 
-          // Menampilkan notifikasi sukses dan mengarahkan pengguna ke halaman utama
-          notification.success({
-            message: 'Berhasil Masuk',
-            description: 'Login berhasil, selamat datang!',
-            placement: 'top',
-            duration: 3,
-          });
+          setIsModalVisible(true); // Menampilkan modal sukses login
           navigate('/');
         } else {
-          // Menampilkan notifikasi error jika username atau password salah
-          notification.error({
-            message: 'Gagal Login',
-            description: 'Username atau password salah.',
-            placement: 'top',
-            duration: 3,
-          });
+          setIsModalVisible(true); // Menampilkan modal gagal login
         }
       } catch (error) {
-        // Menangani error jika terjadi kesalahan dalam proses fetching
-        notification.error({
-          message: 'Error',
-          description: 'Terjadi kesalahan saat melakukan login.',
-          placement: 'top',
-          duration: 3,
-        });
+        setIsModalVisible(true); // Menampilkan modal error
       }
     } else {
-      // Menampilkan notifikasi error jika username atau password kosong
-      notification.error({
-        message: 'Gagal Login',
-        description: 'Masukkan username dan password yang valid.',
-        placement: 'top',
-        duration: 3, 
-      });
+      setIsModalVisible(true); // Menampilkan modal input kosong
     }
   };
 
@@ -114,6 +82,12 @@ const Login = () => {
         </div>
         <div className="illustration"></div>
       </div>
+
+      {/* Menampilkan CopyLoginModal */}
+      <CopyLoginModal 
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)} 
+      />
     </div>
   );
 };

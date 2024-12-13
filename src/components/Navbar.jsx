@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCart } from "../store";
@@ -6,7 +6,7 @@ import "../styles/navbar.css";
 import logo from "../images/Vector.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faBagShopping, faUser, faRightToBracket, faCartShopping, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { notification } from "antd"; 
+import LoginModal from "./LoginModal"; // Impor komponen modal
 
 function Navbar() {
   const navigate = useNavigate();
@@ -15,18 +15,20 @@ function Navbar() {
   const cartCount = useSelector((state) => state.cart.items.length);
   const dispatch = useDispatch();
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const isActive = (path) => location.pathname === path;
 
   const handleCartClick = () => {
     if (isLoggedIn) {
       dispatch(toggleCart());
     } else {
-      notification.warning({
-        message: "Peringatan",
-        description: "Anda belum login. Silakan login terlebih dahulu untuk membuka cart.",
-        placement: "topRight",
-      });
+      setIsModalVisible(true);
     }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalVisible(false);
   };
 
   const getTimeGreeting = () => {
@@ -127,6 +129,8 @@ function Navbar() {
           </div>
         </nav>
       )}
+
+      <LoginModal visible={isModalVisible} onClose={handleCloseModal} />
     </>
   );
 }

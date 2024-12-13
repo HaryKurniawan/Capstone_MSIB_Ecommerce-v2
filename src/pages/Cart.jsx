@@ -64,21 +64,15 @@ const Cart = () => {
     if (!isLoggedIn) {
       setIsLoginModalOpen(true);
     } else {
-      // Lakukan checkout
       items.forEach(item => {
-        // Ambil stok produk dari localStorage
         let stock = parseInt(localStorage.getItem(`product_stock_${item.id}`)) || 0;
   
-        // Kurangi stok berdasarkan jumlah yang dipesan
         stock -= item.quantity;
   
-        // Update stok di localStorage
         localStorage.setItem(`product_stock_${item.id}`, stock);
   
-        // Hapus item yang telah di-checkout dari keranjang
         dispatch(removeFromCart(item.id));
   
-        // Tampilkan notifikasi untuk setiap item yang dibeli
         notification.success({
           message: `${item.title} Berhasil Dibeli`,
           description: `Stok tersisa: ${stock} item.`,

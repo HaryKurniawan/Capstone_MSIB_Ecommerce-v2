@@ -1,9 +1,8 @@
-// main.jsx
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store";  // Mengimpor store dengan benar
+import store from "./store";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -17,7 +16,7 @@ import ProductDetail from "./pages/ProductDetail";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>  {/* Pastikan store disediakan di sini */}
+    <Provider store={store}> 
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainLayout />}>

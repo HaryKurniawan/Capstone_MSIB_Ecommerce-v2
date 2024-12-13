@@ -1,22 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import ProductCard from './ProductCard';
 import "../styles/ProductList.css";
 
 const ProductList = ({ category, ratingFilter, priceFilter, searchQuery }) => {
-  const [products, setProducts] = useState([]);
+const [products, setProducts] = useState([]);
+
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then((data) => {
+    axios.get('https://fakestoreapi.com/products')
+      .then((response) => {
+        const data = response.data;
         data.forEach(product => {
-          // Menyimpan stok default 20 jika belum ada stok yang di-set
           const stock = localStorage.getItem(`product_stock_${product.id}`) || 20;
-          localStorage.setItem(`product_stock_${product.id}`, stock); // Simpan stok produk
+          localStorage.setItem(`product_stock_${product.id}`, stock);
         });
         setProducts(data);
+      })
+      .catch((error) => {
+        console.error("error fetching data", error);
       });
   }, []);
+
+
 
   let filteredProducts = products.filter((product) => {
     if (category && product.category !== category) return false;
@@ -29,6 +35,7 @@ const ProductList = ({ category, ratingFilter, priceFilter, searchQuery }) => {
   } else if (priceFilter) {
     filteredProducts.sort((a, b) => a.price - b.price);
   }
+  
 
   return (
     <div className="container">

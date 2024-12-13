@@ -31,7 +31,6 @@ function About() {
   return (
     <div className="home">
       <div className="bag-atas-home">
-        {/* Menggunakan komponen SearchBar */}
         <SearchBar 
           searchQuery={searchQuery} 
           setSearchQuery={setSearchQuery} 

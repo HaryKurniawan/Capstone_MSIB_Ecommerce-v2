@@ -27,7 +27,7 @@ const HomePage = () => {
       </Button>
 
       <ModalCustom
-        open={isModalVisible}  // Ganti 'visible' dengan 'open'
+        open={isModalVisible} 
         onClose={handleCancel}
         image="https://via.placeholder.com/400x200"
         title="Judul Modal"
