@@ -52,7 +52,9 @@ const Profile = () => {
   return (
     <div className="profile-container">
       <AvatarChanger photo={profile.photo} onChangePhoto={handlePhotoChange} />
+
       <ProfileForm profile={profile} isEditMode={false} />
+
       <ProfileModals
         isHalfModalVisible={isHalfModalVisible}
         isLogoutModalVisible={isLogoutModalVisible}
@@ -60,15 +62,15 @@ const Profile = () => {
         onConfirmLogout={handleLogout}
         onCancelLogout={() => setIsLogoutModalVisible(false)}
       />
+
       <button className="about-web" onClick={() => setIsHalfModalVisible(true)}>
         <p>About this web</p>
       </button>
 
       <div className="logout-container">
-        <button className="logout-button" onClick={() => setIsLogoutModalVisible(true)}>
-          Logout
-        </button>
+        <button className="logout-button" onClick={() => setIsLogoutModalVisible(true)}> Logout </button>
       </div>
+      
     </div>
   );
 };

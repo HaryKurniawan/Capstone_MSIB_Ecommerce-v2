@@ -2,6 +2,8 @@ import React from 'react';
 import poster1 from '../images/poster-i1.svg';
 import jewelrySvg from '../images/jewelry.svg';
 import menClothes from '../images/menClothes.svg';
+import electro from '../images/electro.svg';
+import women from '../images/women.svg';
 import CopyButton from "../components/CopyButton";
 import "../styles/Home.css";
 
@@ -23,8 +25,9 @@ function Home() {
         <div className="products-container">
           <div className="product-box"><img src={jewelrySvg} /></div>
           <div className="product-box"><img src={menClothes} /></div>
-          <div className="product-box">Jewelry</div>
-          <div className="product-box">Electronics</div>
+          <div className="product-box"><img src={women} /></div>
+          <div className="product-box"><img src={electro} /></div>
+
         </div>
       </div>
 
@@ -41,7 +44,9 @@ function Home() {
         </div>
 
       </div>
+      
     </div>
+    
   );
 }
 

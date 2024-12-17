@@ -22,17 +22,10 @@
 
 .profile-container {
   font-family: 'Poppins', sans-serif;
-  align-items: center;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
-.profile-poster{
-  background-color: #E6E6E6;
-  width: 100%;
-  height: 20vh;
-}
 
 .profile-photo-container {
   margin-top: 80px;
