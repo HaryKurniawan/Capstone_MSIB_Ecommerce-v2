@@ -95,9 +95,10 @@ function Navbar() {
         </div>
 
         <button className="btn-cart" onClick={handleCartClick}>
-          <FontAwesomeIcon className="icon-cart" icon={faCartShopping} />
-          {cartCount > 0 && <div className="cart-count">{cartCount}</div>}
-        </button>
+  <FontAwesomeIcon className="icon-cart" icon={faCartShopping} />
+  {isLoggedIn && cartCount > 0 && <div className="cart-count">{cartCount}</div>}
+</button>
+
       </nav>
 
       {showNavbarBottom && (
