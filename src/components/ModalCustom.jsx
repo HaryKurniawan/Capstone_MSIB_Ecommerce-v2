@@ -32,7 +32,7 @@ const HomePage = () => {
         image="https://via.placeholder.com/400x200"
         title="Judul Modal"
         text="Ini adalah contoh teks yang bisa disesuaikan. Anda bisa mengubah konten modal ini di berbagai halaman."
-        buttonText="Tombol Kustom"  // Teks tombol disesuaikan
+        buttonText="Tombol Kustom"  
         onButtonClick={handleButtonClick}
       />
     </div>

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import AvatarChanger from '../components/AvatarChanger';
 import ProfileForm from '../components/ProfileForm';
 import ProfileModals from '../components/ProfileModals';
-import DefaultProfilePhoto from '../assets/Vector.png';
+import Avatar0 from '../assets/Vector.png';
 import Avatar1 from '../images/avatar1.png';
 import Avatar2 from '../images/avatar2.png';
 import Avatar3 from '../images/avatar3.png';
@@ -13,13 +13,13 @@ import '../styles/Profile.css';
 
 const Profile = () => {
   const navigate = useNavigate();
-  const avatars = [DefaultProfilePhoto, Avatar1, Avatar2, Avatar3, Avatar4];
+  const avatars = [Avatar0, Avatar1, Avatar2, Avatar3, Avatar4];
 
   const [profile, setProfile] = useState({
     name: '',
     email: '',
     address: '',
-    photo: DefaultProfilePhoto,  
+    photo: Avatar0,  
   });
   
   const [isHalfModalVisible, setIsHalfModalVisible] = useState(false);

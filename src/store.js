@@ -1,8 +1,7 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { notification } from 'antd';  
 
-// Ambil data keranjang dari localStorage
-const loadCartFromLocalStorage = () => {
+const loadCart = () => {
   const cartItems = JSON.parse(localStorage.getItem('cart_items')) || [];
   return cartItems;
 };
@@ -10,7 +9,7 @@ const loadCartFromLocalStorage = () => {
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    items: loadCartFromLocalStorage(), 
+    items: loadCart(), 
     showCart: false,
   },
   reducers: {
@@ -18,17 +17,14 @@ const cartSlice = createSlice({
       const { id, quantity } = action.payload;
       const existingItem = state.items.find(item => item.id === id);
 
-      // Ambil stok dari localStorage
       const stock = parseInt(localStorage.getItem(`product_stock_${id}`)) || 0;
 
-      // Periksa apakah stok mencukupi
       if (stock >= quantity) {
         if (existingItem) {
           existingItem.quantity += quantity;
         } else {
           state.items.push({ ...action.payload });
         }
-        // Simpan data keranjang ke localStorage
         localStorage.setItem('cart_items', JSON.stringify(state.items));
       } else {
         notification.error({

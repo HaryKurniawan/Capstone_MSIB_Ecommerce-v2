@@ -12,12 +12,12 @@ function About() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const url = import.meta.env.VITE_URL_PRODUCTS_CATEGORIES; // Mengambil URL dari .env
+        const url = import.meta.env.VITE_URL_PRODUCTS_CATEGORIES; 
         const response = await fetch(url);
         const data = await response.json();
         setCategories(data);
       } catch (error) {
-        console.error("Error fetching categories: ", error);
+        console.error("Eror fetching kategori: ", error);
       }
     };
 
@@ -32,17 +32,13 @@ function About() {
     setActiveFilter(activeFilter === filterType ? '' : filterType);
   };
 
-  const handleSearch = () => {
-    console.log(`Searching for: ${searchQuery}`);
-  };
 
   return (
     <div className="home">
       <div className="bag-atas-home">
         <SearchBar 
           searchQuery={searchQuery} 
-          setSearchQuery={setSearchQuery} 
-          handleSearch={handleSearch} 
+          setSearchQuery={setSearchQuery}  
         />
 
         <div className="filter-buttons">
@@ -52,27 +48,20 @@ function About() {
               onChange={handleCategoryChange}
             >
               <option value="">Kategori</option>
+
               {categories.map((categoryItem, index) => (
                 <option key={index} value={categoryItem}>
                   {categoryItem.charAt(0).toUpperCase() + categoryItem.slice(1)}
+
                 </option>
               ))}
             </select>
           </div>
 
-          <button
-            onClick={() => toggleFilter('rating')}
-            className={activeFilter === 'rating' ? 'active' : ''}
-          >
-            Rating
-          </button>
+          <button onClick={() => toggleFilter('rating')} className={activeFilter === 'rating' ? 'active' : ''} >Rating</button>
 
-          <button
-            onClick={() => toggleFilter('price')}
-            className={activeFilter === 'price' ? 'active' : ''}
-          >
-            Harga
-          </button>
+          <button onClick={() => toggleFilter('price')} className={activeFilter === 'price' ? 'active' : ''}> Harga </button>
+
         </div>
       </div>
       

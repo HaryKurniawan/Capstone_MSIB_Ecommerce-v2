@@ -4,7 +4,6 @@ import warningIllustration from "../images/login-now.svg";
 import { useNavigate } from "react-router-dom";
 import "../styles/loginModal.css";
 
-
 const LoginModal = ({ visible, onClose }) => {
   const navigate = useNavigate();
 

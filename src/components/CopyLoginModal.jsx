@@ -1,16 +1,16 @@
 import React from "react";
 import { Modal, notification } from "antd";
-import warningIllustration from "../images/copyModal.svg"; 
+import announcement from "../images/copyModal.svg"; 
 import "../styles/loginModal.css";
 
 const CopyLoginModal = ({ visible, onClose }) => {
   
-  const handleCopyCredentials = () => {
+  const handleCopy = () => {
     const username = "johnd";  
     const password = "m38rmF$"; 
-    const credentials = `${username} ${password}`;
+    const copy = `${username} ${password}`;
     
-    navigator.clipboard.writeText(credentials).then(() => {
+    navigator.clipboard.writeText(copy).then(() => {
       notification.success({
         message: 'Berhasil Menyalin',
         description: 'Username dan Password telah disalin ke clipboard.',
@@ -30,10 +30,10 @@ const CopyLoginModal = ({ visible, onClose }) => {
       width={300}
     >
       <div className="modal-content">
-        <img src={warningIllustration} className="modal-illustration"/>
+        <img src={announcement} className="modal-illustration"/>
         <p className="modal-title">Pengumuman!</p>
         <p className="modal-description">Untuk login, salin username dan password dengan tombol di bawah</p>
-        <button className="modal-button" onClick={handleCopyCredentials}>Salin</button>
+        <button className="modal-button" onClick={handleCopy}>Salin</button>
       </div>
       
     </Modal>

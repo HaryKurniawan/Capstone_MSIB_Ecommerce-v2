@@ -1,14 +1,14 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Cart from './components/Cart';
-import ProductList from './components/ProductList';
+// import ProductList from './components/ProductList';
 
 const App = () => {
   return (
     <div>
       <Navbar />
       <Cart />
-      <ProductList />
+      {/* <ProductList /> */}
     </div>
   );
 };
