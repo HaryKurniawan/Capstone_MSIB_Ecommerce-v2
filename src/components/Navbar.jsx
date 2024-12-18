@@ -70,7 +70,7 @@ function Navbar() {
                 <Link to="/" className={isActive("/") ? "active" : ""}>
                   Home
                 </Link>
-                <Link to="/about" className={isActive("/about") ? "active" : ""}>
+                <Link to="/shop" className={isActive("/shopt") ? "active" : ""}>
                   Shop
                 </Link>
                 {isLoggedIn && (
@@ -108,9 +108,9 @@ function Navbar() {
               <FontAwesomeIcon icon={faHome} className="fa-icon" />
               {isActive("/") && <span> Home</span>}
             </Link>
-            <Link to="/about" className={isActive("/about") ? "active" : ""}>
+            <Link to="/shop" className={isActive("/shop") ? "active" : ""}>
               <FontAwesomeIcon icon={faBagShopping} className="fa-icon" />
-              {isActive("/about") && <span> Shop</span>}
+              {isActive("/shop") && <span> Shop</span>}
             </Link>
             {isLoggedIn && (
               <Link to="/profile" className={isActive("/profile") ? "active" : ""}>

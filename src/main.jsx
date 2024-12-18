@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
-import About from "./pages/About";
+import Shop from "./pages/shop";
 import LoginPage from "./pages/Login";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
+            <Route path="shop" element={<Shop />} />
             <Route path="login" element={<LoginPage />} />
             <Route
               path="cart"

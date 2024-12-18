@@ -3,7 +3,7 @@ import ProductList from '../components/ProductList';
 import '../styles/About.css';
 import SearchBar from '../components/SearchBar';
 
-function About() {
+function Shop() {
   const [category, setCategory] = useState('');
   const [categories, setCategories] = useState([]);
   const [activeFilter, setActiveFilter] = useState('');
@@ -77,4 +77,4 @@ function About() {
   );
 }
 
-export default About;
+export default Shop;

@@ -1,10 +1,7 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
-
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
-import About from './pages/About';
-import ProductList from "../components/ProductList";
-
+import Shop from './pages/shop';
 
 const router = createBrowserRouter([
   {
@@ -16,8 +13,8 @@ const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: 'about',
-        element: <About />
+        path: 'shop',
+        element: <Shop />
       },
       {
         path: 'dashboard',

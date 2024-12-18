@@ -139,7 +139,7 @@ const Cart = () => {
                 <button
                   className="empty-cart-button"
                   onClick={() => {
-                    window.location.href = "./";
+                    window.location.href = "./shop";
                   }}
                 >
                   Belanja Sekarang
