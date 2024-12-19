@@ -5,48 +5,43 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
-import Shop from "./pages/Shop";
+import Shop from "./pages/shop";
 import LoginPage from "./pages/Login";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './app.css';
 import ProductDetail from "./pages/ProductDetail";
-
-const rootStyle = {
-  backgroundColor: '#F6F6F6',
-};
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}> 
       <BrowserRouter>
-        <div style={rootStyle}>
-          <Routes>
-            <Route path="/" element={<MainLayout />}>
-              <Route index element={<Home />} />
-              <Route path="shop" element={<Shop />} />
-              <Route path="login" element={<LoginPage />} />
-              <Route
-                path="cart"
-                element={
-                  <ProtectedRoute>
-                    <Cart />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="profile"
-                element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="product/:id" element={<ProductDetail />} />
-            </Route>
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="shop" element={<Shop />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route
+              path="cart"
+              element={
+                <ProtectedRoute>
+                  <Cart />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="product/:id" element={<ProductDetail />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
