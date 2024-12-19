@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
-import Shop from "./pages/shop";
+import Shop from "./pages/Shop";
 import LoginPage from "./pages/Login";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
