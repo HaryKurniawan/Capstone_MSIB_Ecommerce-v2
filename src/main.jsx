@@ -11,7 +11,7 @@ import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/app.css';
+import './index.css';
 import ProductDetail from "./pages/ProductDetail";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
