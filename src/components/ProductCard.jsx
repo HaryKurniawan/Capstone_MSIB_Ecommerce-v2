@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../store";
+import { addToCart } from "../store/store";
 import { useNavigate } from "react-router-dom";
 import LoginModal from "../components/LoginModal"; 
 import "../styles/ProductCard.css";

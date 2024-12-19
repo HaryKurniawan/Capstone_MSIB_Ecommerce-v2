@@ -33,6 +33,7 @@
   background-color: var(--background-menu);
   margin-bottom: 8px;
   padding: 8px;
+  max-width: 230px;
 }
 
 .cardd img {

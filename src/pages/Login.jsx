@@ -85,7 +85,6 @@ const Login = () => {
         <div className="illustration"></div>
       </div>
 
-      {/* Menampilkan CopyLoginModal */}
       <CopyLoginModal 
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)} 

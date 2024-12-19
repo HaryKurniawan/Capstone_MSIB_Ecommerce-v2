@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../store";
+import { addToCart } from "../store/store";
 import axios from "axios";  
 import "../styles/ProductDetail.css";
 import { Modal, notification } from "antd";

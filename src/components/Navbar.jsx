@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleCart } from "../store";
+import { toggleCart } from "../store/store";
 import "../styles/navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome, faBagShopping, faUser, faRightToBracket, faCartShopping, faArrowLeft } from "@fortawesome/free-solid-svg-icons";

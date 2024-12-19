@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { incrementQuantity, decrementQuantity, removeFromCart, toggleCart } from "../store";
+import { incrementQuantity, decrementQuantity, removeFromCart, toggleCart } from "../store/store";
 import { Modal, notification } from "antd"; 
 import emptyCartImage from "../images/cart.png";
 import "../styles/cart.css";

@@ -27,7 +27,6 @@ function Home() {
           <div className="product-box"><img src={menClothes} /></div>
           <div className="product-box"><img src={women} /></div>
           <div className="product-box"><img src={electro} /></div>
-
         </div>
       </div>
 
