@@ -15,7 +15,6 @@ import ProductDetail from "./pages/ProductDetail";
 
 const rootStyle = {
   backgroundColor: '#F6F6F6',
-  minHeight: '100vh',
 };
 
 ReactDOM.createRoot(document.getElementById("root")).render(
