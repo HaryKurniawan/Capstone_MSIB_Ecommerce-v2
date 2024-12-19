@@ -56,9 +56,7 @@ function Home() {
       <div className="promo-banner">
         <h2>Exclusive 0.5$</h2>
         <p>Use code <strong>HaryStore</strong> at checkout. Limited time only!</p>
-        <button className="discount-btn" onClick={copyToClipboard}>
-      Copy Voucher
-    </button>
+        <button className="discount-btn" onClick={copyToClipboard}>Copy Voucher</button>
       </div>
 
     </div>

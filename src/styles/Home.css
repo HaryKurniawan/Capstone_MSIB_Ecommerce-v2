@@ -1,4 +1,3 @@
-/* NewHome.css */
 .new-home-container {
   font-family: 'Poppins', sans-serif;
   color: #333;
@@ -40,7 +39,8 @@
 }
 
 .shop-now-btn:hover {
-  background-color: #B8D46A;
+  background-color: #1f1f1f;
+
 }
 
 .hero-image img {
@@ -48,7 +48,7 @@
   width: 300px;
 }
 .text-p{
-
+  background-color: transparent;
 }
 .featured-products {
   margin-top: 50px;
@@ -138,12 +138,12 @@
 .learn-more-btn:hover {
   background-color: #B8D46A;
 }
+
 @media (max-width: 768px) {
 
   .products-grid {
     grid-template-columns: repeat(2, 1fr); 
     gap: 10px;
-
   }
   .hero-section{
     padding: 10px 20px;
@@ -166,12 +166,12 @@
   .product-card h3 {
     font-size: 12px;
   }
-.text-p{
-  background-color: #f3f3f3;
-  padding: 4px 6px;
-  border-radius: 5px;
-  margin-left: -4px;
-}
+  .text-p{
+    background-color: #f3f3f3;
+    padding: 4px 6px;
+    border-radius: 5px;
+    margin-left: -4px;
+  }
   .hero-text h3 {
     font-size: 18px;
     color: #4A4A4A;
@@ -185,7 +185,7 @@
   }
 
   .hero-text p {
-display: none;
+    display: none;
   }
 
   .shop-now-btn{
