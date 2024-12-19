@@ -50,7 +50,7 @@ const cartSlice = createSlice({
       } else {
         notification.error({
           message: "Stok Tidak Cukup",
-          description: "Tidak bisa menambah jumlah karena stok tidak mencukupi.",
+          description: "Tidak bisa menambah jumlah karena stok tidak mencukupi",
           placement: "topRight",
           duration: 3,
         });
@@ -60,6 +60,7 @@ const cartSlice = createSlice({
       const item = state.items.find(item => item.id === action.payload);
       if (item && item.quantity > 1) {
         item.quantity -= 1;
+
         // Simpan data keranjang ke localStorage
         localStorage.setItem('cart_items', JSON.stringify(state.items));
       }
@@ -68,15 +69,19 @@ const cartSlice = createSlice({
       state.showCart = !state.showCart;
     },
     checkout(state) {
+
       // Kurangi stok setiap produk yang dibeli
       state.items.forEach(item => {
         const stock = parseInt(localStorage.getItem(`product_stock_${item.id}`)) || 0;
         const newStock = stock - item.quantity;
-        localStorage.setItem(`product_stock_${item.id}`, newStock); // Update stok di localStorage
+        
+        // Update stok di localStorage
+        localStorage.setItem(`product_stock_${item.id}`, newStock); 
       });
 
       // Hapus semua item setelah checkout
       state.items = [];
+
       // Simpan perubahan keranjang ke localStorage
       localStorage.setItem('cart_items', JSON.stringify(state.items));
     }

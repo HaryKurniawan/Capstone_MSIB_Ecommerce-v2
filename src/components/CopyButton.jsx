@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/CopyButton.css";
+
 const CopyButton = ({ textToCopy }) => {
   const [isCopied, setIsCopied] = useState(false);
 

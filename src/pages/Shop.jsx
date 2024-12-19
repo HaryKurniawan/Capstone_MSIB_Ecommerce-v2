@@ -12,7 +12,7 @@ function Shop() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const url = import.meta.env.VITE_URL_PRODUCTS_CATEGORIES; 
+        const url = `${import.meta.env.VITE_API_BASE_URL}/products/categories`;
         const response = await fetch(url);
         const data = await response.json();
         setCategories(data);
@@ -35,7 +35,7 @@ function Shop() {
 
   return (
     <div className="home">
-      <div className="bag-atas-home">
+      <div className="top-home">
         <SearchBar 
           searchQuery={searchQuery} 
           setSearchQuery={setSearchQuery}  

@@ -9,7 +9,7 @@ const ProductList = ({ category, ratingFilter, priceFilter, searchQuery }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const url = import.meta.env.VITE_URL_PRODUCTS; 
+        const url = `${import.meta.env.VITE_API_BASE_URL}/products`;
         const response = await axios.get(url);
         const data = response.data;
 

@@ -53,7 +53,7 @@
   padding-bottom: 8px;
 }
 
-.bag-atas-home{
+.top-home{
   width: 80%;
   background-color: #F6F6F6; 
   position: fixed;
@@ -85,7 +85,7 @@
 }
 
 @media (max-width: 768px) {
-  .bag-atas-home{
+  .top-home{
     width: 100%;
     margin-left: 0%;
     position: fixed;
